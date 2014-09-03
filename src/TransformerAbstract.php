@@ -231,7 +231,11 @@ abstract class TransformerAbstract
      **/
     protected function item($data, $transformer, $resourceKey = null)
     {
-        return new Item($data, $transformer, $resourceKey);
+        if($data === null){
+            return new Item(null, function($x){ return null; });
+        }else{
+            return new Item($data, $transformer, $resourceKey);
+        }
     }
 
     /**
